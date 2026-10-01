@@ -81,16 +81,15 @@ export default function App() {
             <Tag className="text-2xl">ABOUT ME</Tag>
             <p className="mt-8 text-sm leading-relaxed">
               I’m Rafi, a Computer Science and Engineering graduate from RUET,
-              living in Dhaka. I care less about which framework is in fashion
-              and more about why a system behaves the way it does: why a cache
-              helps, why an event queue decouples two services, why a model
-              fails on images it hasn’t seen.
+              living in Dhaka. Currently specializing in building Agentic AI Systems, Deep Learning, and
+              Full-Stack Engineering. Experienced in building Computer Vision architectures (Vision Transformers, 2D CNNs),
+              Generative AI RAG pipelines with LangChain, LangGraph and scalable Microservices using Node.js, Docker, and Redis
             </p>
-            <p className="mt-4 text-sm leading-relaxed">
+            {/* <p className="mt-4 text-sm leading-relaxed">
               Most of what I make sits where backend systems meet machine
               learning. Outside the terminal, I helped run the university’s
               computing society and a cultural club.
-            </p>
+            </p> */}
           </div>
           <div>
             <h2 className="mb-5 flex items-center gap-3 text-lg font-bold">
