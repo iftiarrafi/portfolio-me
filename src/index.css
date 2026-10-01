@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "Space Mono", ui-monospace, Menlo, monospace;
+  --color-paper: #d9d9ca;
+  --color-sheet: #e3e3d6;
+  --color-ink: #1d2036;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-[#c6c6b6] font-mono text-ink antialiased; }
+:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
