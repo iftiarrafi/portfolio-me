@@ -35,7 +35,7 @@ export const projectGroups = [
         name: "TrueCanvas",
         stack: "MERN · Redis · PyTorch · Flask",
         thumb: "projects/truecanvas.jpg",
-        text: "A social platform for human-drawn art. A fine-tuned Vision Transformer, served from a Flask microservice, tells human art from AI art.",
+        text: "A social platform for sharing only human-drawn art. A fine-tuned Vision Transformer, served from a Flask microservice to classify and prevent sharing AI generated art.",
         link: "https://github.com/iftiarrafi/True-Canvas",
       },
       {
@@ -49,7 +49,7 @@ export const projectGroups = [
         name: "Musico",
         stack: "MERN · Redux Toolkit · Tailwind",
         thumb: "projects/musico.png",
-        text: "A platform that connects fans with band members: event booking, live chat, Stripe payments and an admin dashboard.",
+        text: "A platform that connects fans with band members: event booking, chat, Stripe payments and an admin dashboard.",
         link: "https://github.com/iftiarrafi/Musico",
       },
     ],
@@ -61,7 +61,7 @@ export const projectGroups = [
         name: "DATA AI Agent",
         stack: "LangGraph · PostgreSQL · ChatGroq",
         thumb: "/projects/sql-ai-agent.jpg",
-        text: "This AI Agent can build safe SQL query from user's input and fetch data from PostgreSQL Server and response with structure output",
+        text: "This AI Agent can build safe SQL query from user's input , checks the safety and fetch data from PostgreSQL Server and response with structure output",
         link: "https://github.com/iftiarrafi/Data-AI-Agent",
       },
       {
