@@ -16,7 +16,7 @@ export const education = [
     "2022 – 2026",
   ],
   ["Notre Dame College", "Higher Secondary Certificate", "2018 – 2020"],
-  // ["Willes Little Flower School and College", "Secondary School Certificate", "2009 – 2018"],
+  ["Willes Little Flower School and College", "Secondary School Certificate", "2009 – 2018"],
 ];
 
 // thumb: put images in /public/projects/ — until then a placeholder is shown
