@@ -16,7 +16,6 @@ const Star = () => (
   </span>
 );
 
-
 const Section = ({ id, children, className = "" }) => (
   <section
     id={id}
@@ -66,11 +65,10 @@ export default function App() {
           </p>
         </div>
         <Photo
-          natural
           src={me.photo}
           alt="Portrait of Md. Iftiar Rafi"
           label="Your photo → public/rafi.jpg"
-          className="self-end"
+          className="self-end border border-ink/30"
         />
       </header>
 
@@ -85,11 +83,6 @@ export default function App() {
               Full-Stack Engineering. Experienced in building Computer Vision architectures (Vision Transformers, 2D CNNs),
               Generative AI RAG pipelines with LangChain, LangGraph and scalable Microservices using Node.js, Docker, and Redis
             </p>
-            {/* <p className="mt-4 text-sm leading-relaxed">
-              Most of what I make sits where backend systems meet machine
-              learning. Outside the terminal, I helped run the university’s
-              computing society and a cultural club.
-            </p> */}
           </div>
           <div>
             <h2 className="mb-5 flex items-center gap-3 text-lg font-bold">
@@ -118,14 +111,14 @@ export default function App() {
             <h2 className="mb-6 flex items-center gap-3 text-lg font-bold">
               <Star /> {g.title}
             </h2>
-            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 hover:cursor-pointer">
               {g.items.map((p) => (
                 <article key={p.name}>
                   <Photo
                     src={p.thumb}
                     alt={`${p.name} screenshot`}
                     label={`Thumbnail → public${p.thumb}`}
-                    className="aspect-[4/3] border border-ink/30"
+                    className="border border-ink/30"
                   />
                   <h3 className="mt-4 font-bold">{p.name}</h3>
                   <p className="text-xs text-ink/60">{p.stack}</p>
@@ -209,11 +202,10 @@ export default function App() {
         className="grid gap-8 border-t border-ink/15 px-6 pt-14 sm:grid-cols-[260px_1fr] sm:px-12"
       >
         <Photo
-          natural
           src={me.photo2}
           alt="Md. Iftiar Rafi"
           label="Optional second photo → public/rafi-2.jpg"
-          className="self-end"
+          className="self-end border border-ink/30"
         />
         <div className="flex flex-col justify-end pb-14">
           <Tag rot="-rotate-2" className="mb-8 self-start text-2xl">
