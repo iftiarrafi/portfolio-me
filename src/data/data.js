@@ -60,8 +60,8 @@ export const projectGroups = [
       {
         name: "DATA AI Agent",
         stack: "LangGraph · PostgreSQL · ChatGroq",
-        thumb: "/projects/sql-ai-agent.jpg",
-        text: "This AI Agent can build safe SQL query from user's input , checks the safety and fetch data from PostgreSQL Server and response with structure output",
+        thumb: "/projects/data-ai-agent.jpg",
+        text: "Multi-Agent Data Analyst & ETL System multi-agent AI system built with LangGraph, LangChain, and PostgreSQL.",
         link: "https://github.com/iftiarrafi/Data-AI-Agent",
       },
       {
