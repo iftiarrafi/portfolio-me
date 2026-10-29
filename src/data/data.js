@@ -22,28 +22,32 @@ export const education = [
 // thumb: put images in /public/projects/ — until then a placeholder is shown
 export const projectGroups = [
   {
-    title: "Systems & web",
+    title: "Systems & Web Applications",
     items: [
-      {
-        name: "Microservice E-commerce Backend",
-        stack: "Express.js · Kafka · Docker",
-        thumb: "/projects/microservice-ecommerce.png",
-        text: "An e-commerce backend split into containerized services that talk through Kafka events, with rate limiting against traffic spikes.",
-        link: "https://github.com/iftiarrafi/microservice-ecommerce-backend",
-      },
       {
         name: "TrueCanvas",
         stack: "MERN · Redis · PyTorch · Flask",
         thumb: "projects/truecanvas.jpg",
         text: "A social platform for sharing only human-drawn art. A fine-tuned Vision Transformer, served from a Flask microservice to classify and prevent sharing AI generated art.",
         link: "https://github.com/iftiarrafi/True-Canvas",
+        video_link: "https://youtu.be/yKUEOZPR2UE"
       },
+      {
+        name: "Microservice E-commerce Backend",
+        stack: "Express.js · Kafka · Docker",
+        thumb: "/projects/microservice-ecommerce.png",
+        text: "An e-commerce backend split into containerized services that talk through Kafka events, with rate limiting against traffic spikes.",
+        link: "https://github.com/iftiarrafi/microservice-ecommerce-backend",
+        video_link: "https://github.com/iftiarrafi/microservice-ecommerce-backend"
+      },
+
       {
         name: "Echo",
         stack: "Socket.io · Redis · Node.js",
         thumb: "projects/echo.jpg",
         text: "A real-time chat app over WebSockets, with Redis caching to ease the load on the database and JWT-secured traffic.",
         link: "https://github.com/iftiarrafi/Echo-ChatApp",
+        video_link: "https://youtu.be/49-qr4b13Pw"
       },
       {
         name: "Musico",
@@ -51,6 +55,7 @@ export const projectGroups = [
         thumb: "projects/musico.png",
         text: "A platform that connects fans with band members: event booking, chat, Stripe payments and an admin dashboard.",
         link: "https://github.com/iftiarrafi/Musico",
+        video_link: "https://github.com/iftiarrafi/Musico"
       },
     ],
   },
@@ -63,13 +68,23 @@ export const projectGroups = [
         thumb: "/projects/data-ai-agent.jpg",
         text: "Multi-Agent Data Analyst & ETL System multi-agent AI system built with LangGraph, LangChain, and PostgreSQL.",
         link: "https://github.com/iftiarrafi/Data-AI-Agent",
+        video_link: "https://youtu.be/rlc12O6PXl0"
       },
       {
         name: "Multi-Agent Blog Generator",
         stack: "LangGraph · LangChain · Groq",
         thumb: "/projects/multi-agent-blogger.jpg",
-        text: "Research, writer and editor agents share one stateful workflow, pausing for a human to approve or send feedback.",
+        text: "Research, writer and editor agents share one stateful workflow using Human-in-the-loop, pausing for a human to approve or send feedback.",
         link: "https://github.com/iftiarrafi/Multi-AI-Agent-Blog-Generator-using-LangGraph",
+        video_link: "https://youtu.be/uS5QspuW0lY"
+      },
+      {
+        name: "RAG Evaluation System",
+        stack: "LangGraph · Deepeval · Groq",
+        thumb: "/projects/rag_eval.jpg",
+        text: "A evaluation lab for one RAG pipeline: ask questions about a PDF, score the answers with DeepEval metrics, and compare saved evaluation runs.",
+        link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval",
+        video_link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval"
       },
       {
         name: "PDF Chat Bot",
@@ -77,6 +92,7 @@ export const projectGroups = [
         thumb: "/projects/rag-pdf-chatbot.jpg",
         text: "A retrieval-augmented chatbot: parse, chunk, embed and search a PDF, then answer questions grounded in it.",
         link: "https://github.com/iftiarrafi/PDF-RAG-Bot",
+        video_link: "https://youtu.be/c8cNnl3ZWiA"
       },
     ],
   },
@@ -106,7 +122,7 @@ export const milestones = [
   ],
   [
     "LeetCode",
-    "185+ problems: dynamic programming, graphs, backtracking, union-find, greedy.",
+    "210+ problems: dynamic programming, graphs, backtracking, union-find, greedy.",
     me.leetcode,
   ],
 ];
