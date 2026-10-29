@@ -324,7 +324,7 @@ export default function App() {
                   </article>
                 ))}
               </div>
-            </div>
+            </div> 
 
             <div>
               <SectionHeading
