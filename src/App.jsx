@@ -1,247 +1,408 @@
-import { me, education, projectGroups, toolkit, milestones, community } from './data/data.js'
+
+import {
+  me,
+  education,
+  projectGroups,
+  toolkit,
+  milestones,
+  community,
+} from "./data/data.js";
+
 import Photo from "./Components/Photo.jsx";
 
-/* ───────── Small building blocks ───────── */
-const Tag = ({ children, rot = "-rotate-3", className = "" }) => (
-  <span
-    className={`inline-block border-2 border-ink bg-paper px-4 py-1.5 font-bold ${rot} ${className}`}
-  >
-    {children}
-  </span>
-);
+const navItems = [
+  ["About", "#about"],
+  ["Projects", "#projects"],
+  ["Toolkit", "#toolkit"],
+];
 
-const Star = () => (
-  <span aria-hidden className="text-3xl leading-none">
-    *
-  </span>
-);
+function SectionHeading({ eyebrow, title, description }) {
+  return (
+    <div className="mb-10 max-w-2xl">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+        {eyebrow}
+      </p>
+      <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+        {title}
+      </h2>
+      {description && (
+        <p className="mt-4 text-sm leading-7 text-slate-500 sm:text-base">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+}
 
-const Section = ({ id, children, className = "" }) => (
-  <section
-    id={id}
-    className={`border-t border-ink/15 px-6 py-14 sm:px-12 ${className}`}
-  >
-    {children}
-  </section>
-);
+function ArrowLink({ href, children }) {
+  if (!href) return null;
 
-/* ───────── Page ───────── */
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition-colors hover:text-blue-600"
+    >
+      {children}
+      <span aria-hidden="true">↗</span>
+    </a>
+  );
+}
+
+function ProjectCard({ project }) {
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300  hover:cursor-pointer hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50">
+      <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+        <Photo
+          src={project.thumb}
+          alt={`${project.name} screenshot`}
+          label={`Thumbnail → public${project.thumb}`}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <p className="mb-3 text-xs font-medium leading-5 text-blue-600">
+          {project.stack}
+        </p>
+
+        <h3 className="text-lg font-semibold tracking-tight text-slate-900">
+          {project.name}
+        </h3>
+
+        <p className="mt-3 flex-1 text-sm leading-6 text-slate-500">
+          {project.text}
+        </p>
+
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-slate-100 pt-4">
+          <ArrowLink href={project.link}>Source code</ArrowLink>
+          <ArrowLink href={project.video_link}>Live demo</ArrowLink>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function App() {
   return (
-    <main className="mx-auto my-0 max-w-5xl overflow-hidden bg-paper sm:my-8 sm:rounded-3xl">
-      {/* Hero */}
-      <header className="grid gap-8 px-6 pt-8 sm:grid-cols-[1fr_320px] sm:px-12">
-        <div className="flex flex-col justify-between pb-10">
-          <p className="text-xs leading-relaxed">
-            COMPUTER SCIENCE
-            <br />
-            <span className="font-bold underline underline-offset-4">
-              ENGINEER
-            </span>
-          </p>
-          <div className="my-12">
-            <Tag className="text-3xl sm:text-5xl">{me.first}</Tag>
-            <svg
-              aria-hidden
-              viewBox="0 0 120 60"
-              className="ml-24 h-14 w-28 text-ink"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path d="M5 5 C 60 0, 60 50, 20 40 C 5 35, 40 20, 100 48" />
-              <path d="M92 40 L102 49 L90 54" />
-            </svg>
-            <div className="sm:ml-24">
-              <Tag rot="rotate-2" className="text-3xl sm:text-5xl">
-                {me.last}
-              </Tag>
-            </div>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed">
-            I study how computers work, from algorithms and operating systems to
-            the models and services built on top of them. Then I build things to
-            test what I’ve understood.
-          </p>
-        </div>
-        <Photo
-          src={me.photo}
-          alt="Portrait of Md. Iftiar Rafi"
-          label="Your photo → public/rafi.jpg"
-          className="self-center border border-ink/30"
-        />
-      </header>
+    <div className="min-h-screen bg-[#f8fafc] text-slate-900">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+          <a
+            href="#home"
+            className="text-lg font-bold tracking-tight text-slate-950"
+          >
+            rafi<span className="text-blue-600">.</span>
+          </a>
 
-      {/* About */}
-      <Section id="about">
-        <div className="grid gap-10 sm:grid-cols-[1fr_1.3fr]">
-          <div>
-            <Tag className="text-2xl">ABOUT ME</Tag>
-            <p className="mt-8 text-sm leading-relaxed">
-              I’m Rafi, a Computer Science and Engineering graduate from RUET,
-              living in Dhaka. Currently specializing in building Agentic AI Systems, Deep Learning, and
-              Full-Stack Engineering. Experienced in building Computer Vision architectures (Vision Transformers, 2D CNNs),
-              Generative AI RAG pipelines with LangChain, LangGraph and scalable Microservices using Node.js, Docker, and Redis
+          <div className="flex items-center gap-4 sm:gap-7">
+            {navItems.map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                className="text-xs font-medium text-slate-500 transition-colors hover:text-slate-950 sm:text-sm"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <main className="mx-auto max-w-6xl px-5 sm:px-8">
+        {/* Hero */}
+        <header
+          id="home"
+          className="grid min-h-[590px] items-center gap-12 py-20 sm:py-24 md:grid-cols-[1.3fr_0.7fr] md:gap-16"
+        >
+          <div className="order-2 md:order-1">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-600 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              Computer Science Engineer · Bangladesh
+            </div>
+
+            <h1 className="text-5xl font-semibold leading-[1.08] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">
+              Hi, I&apos;m
+              <br />
+              <span className="text-blue-600">{me.first} {me.last}.</span>
+            </h1>
+
+            <p className="mt-7 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+              I build intelligent systems and full-stack applications,
+              combining AI engineering, deep learning, and scalable
+              software architecture to solve real-world problems.
             </p>
-          </div>
-          <div>
-            <h2 className="mb-5 flex items-center gap-3 text-lg font-bold">
-              <Star /> Where I studied
-            </h2>
-            <ul className="space-y-5">
-              {education.map(([school, degree, years]) => (
-                <li key={school} className="border-l-2 border-ink pl-4">
-                  <p className="font-bold">{school}</p>
-                  <p className="text-sm">{degree}</p>
-                  <p className="text-xs text-ink/60">{years}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
 
-      {/* Projects */}
-      <Section id="projects">
-        <div className="mb-10 flex items-center gap-4">
-          <Tag className="text-2xl">THINGS I’VE BUILT</Tag>
-        </div>
-        {projectGroups.map((g) => (
-          <div key={g.title} className="mb-14 last:mb-0">
-            <h2 className="mb-6 flex items-center gap-3 text-lg font-bold">
-              <Star /> {g.title}
-            </h2>
-            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-3 hover:cursor-pointer">
-              {g.items.map((p) => (
-                <article key={p.name} className='p-1 border border-ink/30 rounded'>
-                  <Photo
-                    src={p.thumb}
-                    alt={`${p.name} screenshot`}
-                    label={`Thumbnail → public${p.thumb}`}
-                    className="border border-ink/30"
-                  />
-                  <h3 className="mt-4 font-bold">{p.name}</h3>
-                  <p className="text-xs text-ink/60">{p.stack}</p>
-                  <p className="mt-2 text-sm leading-relaxed">{p.text}</p>
-                  <div className="flex flex-row gap-4 justify-around">
-                    <a
-                      href={p.link}
-                      className="mt-2 text-xs font-bold underline underline-offset-4"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      GitHub
-                    </a>
-                    <a
-                      href={p.video_link}
-                      className="mt-2 text-xs font-bold underline underline-offset-4"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Video Demo
-                    </a>
-                  </div>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-3 rounded-xl bg-slate-950 px-5 py-3.5 text-sm font-medium text-white transition-all hover:bg-blue-600"
+              >
+                Explore my work
+                <span aria-hidden="true">→</span>
+              </a>
 
-                </article>
-              ))}
+              <a
+                href={`mailto:${me.email}`}
+                className="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-950"
+              >
+                Get in touch
+              </a>
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-500">
+              <ArrowLink href={me.github}>GitHub</ArrowLink>
+              <ArrowLink href={me.leetcode}>LeetCode</ArrowLink>
+              <span>{me.location}</span>
             </div>
           </div>
-        ))}
-      </Section>
 
-      {/* Toolkit */}
-      <Section id="toolkit">
-        <div className="flex justify-center">
-          <Tag className="text-2xl" rot="rotate-0">
-            WHAT I WORK WITH
-          </Tag>
-        </div>
-        <div className="mt-10 grid gap-8 sm:grid-cols-3">
-          {toolkit.map(([title, list]) => (
-            <div key={title} className="border-2 border-ink p-5">
-              <h2 className="font-bold">{title}</h2>
-              <p className="mt-2 text-sm leading-relaxed">{list}</p>
+          <div className="order-1 mx-auto w-full max-w-[320px] md:order-2">
+            <div className="relative">
+              <div className="absolute -inset-3 -rotate-3 rounded-[2rem] bg-blue-100/70" />
+              <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-300/40">
+                <Photo
+                  src={me.photo}
+                  alt="Portrait of Md. Iftiar Rafi"
+                  label="Your photo → public/rafi.jpg"
+                  className="aspect-[4/5] w-full rounded-[1.25rem] object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-5 -left-5 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-lg shadow-slate-200/50">
+                <p className="text-xs text-slate-500">Focused on</p>
+                <p className="mt-1 text-sm font-semibold text-slate-900">
+                  AI & Software Engineering
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Milestones */}
-      <Section id="milestones">
-        <div className="grid gap-10 sm:grid-cols-2">
-          <div>
-            <h2 className="mb-5 flex items-center gap-3 text-lg font-bold">
-              <Star /> Along the way
-            </h2>
-            <ul className="space-y-5 text-sm">
-              {milestones.map(([t, d, href]) => (
-                <li key={t}>
-                  {href ? (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-bold underline underline-offset-4"
-                    >
-                      {t}
-                    </a>
-                  ) : (
-                    <b>{t}</b>
-                  )}
-                  <p className="mt-1 leading-relaxed">{d}</p>
-                </li>
-              ))}
-            </ul>
           </div>
-          <div>
-            <h2 className="mb-5 flex items-center gap-3 text-lg font-bold">
-              <Star /> Beyond code
-            </h2>
-            <ul className="space-y-5 text-sm">
-              {community.map(([t, d]) => (
-                <li key={t}>
-                  <b>{t}</b>
-                  <p className="mt-1">{d}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
+        </header>
 
-      {/* Contact */}
-      <footer
-        id="contact"
-        className="grid gap-8 border-t border-ink/15 px-6 pt-14 sm:grid-cols-[260px_1fr] sm:px-12"
-      >
-        <Photo
-          src={me.photo2}
-          alt="Md. Iftiar Rafi"
-          label="Optional second photo → public/rafi-2.jpg"
-          className="self-end border border-ink/30"
-        />
-        <div className="flex flex-col justify-end pb-14">
-          <Tag rot="-rotate-2" className="mb-8 self-start text-2xl">
-            SAY HELLO
-          </Tag>
-          <ul className="space-y-2 text-sm underline underline-offset-4">
-            <li>
-              <a href={`mailto:${me.email}`}>{me.email}</a>
-            </li>
-            <li>
-              <a href={me.github} target="_blank" rel="noreferrer">
-                github.com/iftiarrafi
+        {/* About */}
+        <section
+          id="about"
+          className="scroll-mt-24 border-t border-slate-200 py-20 sm:py-24"
+        >
+          <div className="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-20">
+            <div>
+              <SectionHeading
+                title="About Me."
+              />
+
+              <p className="text-sm leading-8 text-slate-600 sm:text-base">
+                I&apos;m Rafi, a Computer Science and Engineering graduate
+                from RUET CSE, based in Dhaka. I work across Agentic AI,
+                deep learning, generative AI, and full-stack engineering.
+                My interests include computer vision architectures,
+                retrieval-augmented generation, and distributed
+                microservices built with tools like Node.js, Nest.js, Docker, Kafka
+                and Redis.
+              </p>
+
+            </div>
+
+            <div>
+              <h3 className="mb-7 text-lg font-semibold tracking-tight">
+                Education
+              </h3>
+
+              <div className="space-y-7">
+                {education.map(([school, degree, years]) => (
+                  <article
+                    key={school}
+                    className="relative border-l-2 border-slate-200 pl-5 before:absolute before:-left-[5px] before:top-1.5 before:h-2 before:w-2 before:rounded-full before:bg-blue-600"
+                  >
+                    <p className="font-semibold text-slate-900">{school}</p>
+                    <p className="mt-1 text-sm leading-6 text-slate-600">
+                      {degree}
+                    </p>
+                    <p className="mt-2 text-xs text-slate-400">{years}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section
+          id="projects"
+          className="scroll-mt-24 border-t border-slate-200 py-20 sm:py-24"
+        >
+          <SectionHeading
+            title="Things I've built."
+            description="A selection of projects exploring AI, Full-stack development, and the engineering behind reliable applications."
+          />
+
+          <div className="space-y-16">
+            {projectGroups.map((group) => (
+              <div key={group.title}>
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {group.title}
+                  </h3>
+                  <span className="text-xs text-slate-400">
+                    {String(group.items.length).padStart(2, "0")} projects
+                  </span>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ">
+                  {group.items.map((project) => (
+                    <ProjectCard
+                      key={project.name}
+                      project={project}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Toolkit */}
+        <section
+          id="toolkit"
+          className="scroll-mt-24 border-t border-slate-200 py-20 sm:py-24"
+        >
+          <SectionHeading
+            title="Tools I prefer to use!"
+            description="Technologies I use to experiment, build software."
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {toolkit.map(([title, list]) => (
+              <article
+                key={title}
+                className="rounded-2xl border border-slate-200 bg-white p-6 transition-colors hover:border-blue-200"
+              >
+                <div className="mb-5 flex items-center gap-3">
+                  {/* <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-sm font-semibold text-blue-600">
+                    {title.charAt(0)}
+                  </span> */}
+                  <h3 className="font-semibold text-xl text-slate-900">{title}</h3>
+                </div>
+                <p className="text-sm leading-7 text-slate-600">{list}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Milestones and Community */}
+        <section className="border-t border-slate-200 py-20 sm:py-24">
+          <div className="grid gap-14 md:grid-cols-2 md:gap-16">
+            <div>
+              <SectionHeading
+                eyebrow="The journey"
+                title="Milestones."
+              />
+
+              <div className="space-y-7">
+                {milestones.map(([title, description, href]) => (
+                  <article
+                    key={title}
+                    className="border-b border-slate-200 pb-6 last:border-0"
+                  >
+                    <h3 className="font-semibold text-slate-900">
+                      {href ? (
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="transition-colors hover:text-blue-600"
+                        >
+                          {title} <span aria-hidden="true">↗</span>
+                        </a>
+                      ) : (
+                        title
+                      )}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-500">
+                      {description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <SectionHeading
+                eyebrow="Outside the editor"
+                title="Beyond code."
+              />
+
+              <div className="space-y-7">
+                {community.map(([title, description]) => (
+                  <article
+                    key={title}
+                    className="border-b border-slate-200 pb-6 last:border-0"
+                  >
+                    <h3 className="font-semibold text-slate-900">{title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-500">
+                      {description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <footer
+          id="contact"
+          className="scroll-mt-24 border-t border-slate-200 py-16 sm:py-20"
+        >
+          <div className="overflow-hidden rounded-3xpx-6 py-10 text-slate-950 sm:px-10 sm:py-14">
+            <div className="mt-5 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+              <div>
+                <p className="mt-5 max-w-lg text-2xl leading-7 text-slate-950">
+                  Interested in AI engineering, software development,
+                  or building something useful? I&apos;d love to hear from you.
+                </p>
+              </div>
+
+              <a
+                href={`mailto:${me.email}`}
+                className="inline-flex w-fit items-center gap-3 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-blue-100"
+              >
+                Say hello
+                <span aria-hidden="true">↗</span>
               </a>
-            </li>
-            <li>
-              <a href={me.leetcode} target="_blank" rel="noreferrer">
-                leetcode.com/u/serjonsnow
-              </a>
-            </li>
-            <li className="no-underline">{me.location}</li>
-          </ul>
-        </div>
-      </footer>
-    </main>
+            </div>
+
+            <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-slate-950 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm">© {new Date().getFullYear()} {me.first} {me.last}</p>
+
+              <div className="flex flex-wrap gap-5 text-sm">
+                <a
+                  href={me.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-slate-400"
+                >
+                  GitHub ↗
+                </a>
+                <a
+                  href={me.leetcode}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-slate-400"
+                >
+                  LeetCode ↗
+                </a>
+                <a
+                  href={`mailto:${me.email}`}
+                  className="transition-colors hover:text-slate-400"
+                >
+                  Email ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
   );
 }
