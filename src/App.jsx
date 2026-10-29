@@ -68,7 +68,7 @@ export default function App() {
           src={me.photo}
           alt="Portrait of Md. Iftiar Rafi"
           label="Your photo → public/rafi.jpg"
-          className="self-end border border-ink/30"
+          className="self-center border border-ink/30"
         />
       </header>
 
@@ -111,9 +111,9 @@ export default function App() {
             <h2 className="mb-6 flex items-center gap-3 text-lg font-bold">
               <Star /> {g.title}
             </h2>
-            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 hover:cursor-pointer">
+            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-3 hover:cursor-pointer">
               {g.items.map((p) => (
-                <article key={p.name}>
+                <article key={p.name} className='p-1 border border-ink/30 rounded'>
                   <Photo
                     src={p.thumb}
                     alt={`${p.name} screenshot`}
@@ -123,14 +123,25 @@ export default function App() {
                   <h3 className="mt-4 font-bold">{p.name}</h3>
                   <p className="text-xs text-ink/60">{p.stack}</p>
                   <p className="mt-2 text-sm leading-relaxed">{p.text}</p>
-                  <a
-                    href={p.link}
-                    className="mt-2 inline-block text-xs font-bold underline underline-offset-4"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    source on GitHub
-                  </a>
+                  <div className="flex flex-row gap-4 justify-around">
+                    <a
+                      href={p.link}
+                      className="mt-2 text-xs font-bold underline underline-offset-4"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      href={p.video_link}
+                      className="mt-2 text-xs font-bold underline underline-offset-4"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Video Demo
+                    </a>
+                  </div>
+
                 </article>
               ))}
             </div>
@@ -140,9 +151,11 @@ export default function App() {
 
       {/* Toolkit */}
       <Section id="toolkit">
-        <Tag className="text-2xl" rot="rotate-1">
-          WHAT I WORK WITH
-        </Tag>
+        <div className="flex justify-center">
+          <Tag className="text-2xl" rot="rotate-0">
+            WHAT I WORK WITH
+          </Tag>
+        </div>
         <div className="mt-10 grid gap-8 sm:grid-cols-3">
           {toolkit.map(([title, list]) => (
             <div key={title} className="border-2 border-ink p-5">
