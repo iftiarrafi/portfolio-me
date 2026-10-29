@@ -71,6 +71,14 @@ export const projectGroups = [
         video_link: "https://youtu.be/rlc12O6PXl0"
       },
       {
+        name: "F.R.I.D.A.Y",
+        stack: "LangGraph · FAISS · Google Embeddings · Streamlit ·  ChatGroq",
+        thumb: "/projects/chatbot.png",
+        text: "A full-fledged chatbot with RAG , Tools and Database for chat thread persistency",
+        link: "https://github.com/iftiarrafi/F.R.I.D.A.Y",
+        video_link: "https://youtu.be/xmeE2yC3Qz4"
+      },
+      {
         name: "Multi-Agent Blog Generator",
         stack: "LangGraph · LangChain · Groq",
         thumb: "/projects/multi-agent-blogger.jpg",
@@ -85,14 +93,6 @@ export const projectGroups = [
         text: "A evaluation lab for one RAG pipeline: ask questions about a PDF, score the answers with DeepEval metrics, and compare saved evaluation runs.",
         link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval",
         video_link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval"
-      },
-      {
-        name: "PDF Chat Bot",
-        stack: "LangChain · Streamlit · Groq",
-        thumb: "/projects/rag-pdf-chatbot.jpg",
-        text: "A retrieval-augmented chatbot: parse, chunk, embed and search a PDF, then answer questions grounded in it.",
-        link: "https://github.com/iftiarrafi/PDF-RAG-Bot",
-        video_link: "https://youtu.be/c8cNnl3ZWiA"
       },
     ],
   },
