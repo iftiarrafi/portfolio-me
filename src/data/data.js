@@ -11,16 +11,53 @@ export const me = {
 
 export const education = [
   [
-    "Rajshahi University of Engineering & Technology",
+    "Rajshahi University of Engineering & Technology (RUET)",
     "B.Sc. in Computer Science and Engineering",
     "2022 – 2026",
   ],
-  ["Notre Dame College", "Higher Secondary Certificate", "2018 – 2020"],
+  ["Notre Dame College , Dhaka", "Higher Secondary Certificate", "2018 – 2020"],
   ["Willes Little Flower School and College", "Secondary School Certificate", "2009 – 2018"],
 ];
 
 // thumb: put images in /public/projects/ — until then a placeholder is shown
 export const projectGroups = [
+    {
+    title: "Agentic AI Systems",
+    items: [
+      {
+        name: "DATA AI Agent",
+        stack: "LangGraph · PostgreSQL · ChatGroq",
+        thumb: "/projects/data-ai-agent.jpg",
+        text: "Multi-Agent Data Analyst & ETL System multi-agent AI system built with LangGraph, LangChain, and PostgreSQL.",
+        link: "https://github.com/iftiarrafi/Data-AI-Agent",
+        video_link: "https://youtu.be/rlc12O6PXl0"
+      },
+      {
+        name: "F.R.I.D.A.Y",
+        stack: "LangGraph · FAISS · Google Embeddings · Streamlit ·  ChatGroq",
+        thumb: "/projects/chatbot.png",
+        text: "A full-fledged chatbot integrated with RAG system, Tools (Stock market , Google Search , Weather Update) and Database for chat threading persistency",
+        link: "https://github.com/iftiarrafi/F.R.I.D.A.Y",
+        video_link: "https://youtu.be/xmeE2yC3Qz4"
+      },
+      {
+        name: "Multi-Agent Blog Generator",
+        stack: "LangGraph · LangChain · Groq",
+        thumb: "/projects/multi-agent-blogger.jpg",
+        text: "Research, writer and editor agents share one stateful workflow using Human-in-the-loop, pausing for a human to approve or send feedback.",
+        link: "https://github.com/iftiarrafi/Multi-AI-Agent-Blog-Generator-using-LangGraph",
+        video_link: "https://youtu.be/uS5QspuW0lY"
+      },
+      {
+        name: "RAG Evaluation System",
+        stack: "LangGraph · Deepeval · Groq",
+        thumb: "/projects/rag_eval.jpg",
+        text: "A evaluation lab for one RAG pipeline: ask questions about a PDF, score the answers with DeepEval metrics, and compare saved evaluation runs.",
+        link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval",
+        video_link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval"
+      },
+    ],
+  },
   {
     title: "Systems & Web Applications",
     items: [
@@ -59,54 +96,17 @@ export const projectGroups = [
       },
     ],
   },
-  {
-    title: "Agentic AI Systems",
-    items: [
-      {
-        name: "DATA AI Agent",
-        stack: "LangGraph · PostgreSQL · ChatGroq",
-        thumb: "/projects/data-ai-agent.jpg",
-        text: "Multi-Agent Data Analyst & ETL System multi-agent AI system built with LangGraph, LangChain, and PostgreSQL.",
-        link: "https://github.com/iftiarrafi/Data-AI-Agent",
-        video_link: "https://youtu.be/rlc12O6PXl0"
-      },
-      {
-        name: "F.R.I.D.A.Y",
-        stack: "LangGraph · FAISS · Google Embeddings · Streamlit ·  ChatGroq",
-        thumb: "/projects/chatbot.png",
-        text: "A full-fledged chatbot with RAG , Tools and Database for chat thread persistency",
-        link: "https://github.com/iftiarrafi/F.R.I.D.A.Y",
-        video_link: "https://youtu.be/xmeE2yC3Qz4"
-      },
-      {
-        name: "Multi-Agent Blog Generator",
-        stack: "LangGraph · LangChain · Groq",
-        thumb: "/projects/multi-agent-blogger.jpg",
-        text: "Research, writer and editor agents share one stateful workflow using Human-in-the-loop, pausing for a human to approve or send feedback.",
-        link: "https://github.com/iftiarrafi/Multi-AI-Agent-Blog-Generator-using-LangGraph",
-        video_link: "https://youtu.be/uS5QspuW0lY"
-      },
-      {
-        name: "RAG Evaluation System",
-        stack: "LangGraph · Deepeval · Groq",
-        thumb: "/projects/rag_eval.jpg",
-        text: "A evaluation lab for one RAG pipeline: ask questions about a PDF, score the answers with DeepEval metrics, and compare saved evaluation runs.",
-        link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval",
-        video_link: "https://github.com/iftiarrafi/Rag-Evaluation-System-with-DeepEval"
-      },
-    ],
-  },
 ];
 
 export const toolkit = [
-  ["Languages", "Python, C, C++, JavaScript, TypeScript, SQL"],
+  ["Programming languages", "Python, C, C++, JavaScript, TypeScript, SQL"],
   [
     "Systems & web",
-    "Node.js, Express, React, Next.js, Docker, Kafka, Redis, Nginx, Socket.io",
+    "Node.js, Nest.js Express.js, React Native, React, Next.js, Docker, RabbitMq ,Kafka, Redis, Nginx, Socket.io",
   ],
   [
     "ML & AI",
-    "PyTorch, Keras, scikit-learn, OpenCV, NumPy, Pandas, LangChain, LangGraph",
+    "LangChain, LangGraph, PyTorch, Keras, Scikit-learn, OpenCV, NumPy, Pandas",
   ],
 ];
 
